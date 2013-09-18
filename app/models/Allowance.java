@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ public class Allowance extends Model {
     @Id
     public String id;
 
+    @Constraints.Required
     public double allowance;
 
     public double remainder;

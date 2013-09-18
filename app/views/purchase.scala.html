@@ -1,0 +1,8 @@
+@(allowance: Allowance)
+
+Allowance total: @allowance.allowance<br>
+Allowance remainder: @allowance.remainder<br>
+Enter your purchase.
+<form action="@routes.PurchaseController.addPurchase" method="post">
+    <input type="submit">
+</form>
