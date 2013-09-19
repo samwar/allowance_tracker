@@ -28,4 +28,12 @@ public class Allowance extends Model {
     public double remainder;
 
     public Date startDate;
+
+    @Override
+    public String toString() {
+        return "Allowance{" +
+                "allowance=" + allowance +
+                ", remainder=" + remainder +
+                '}';
+    }
 }

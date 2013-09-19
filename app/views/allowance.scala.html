@@ -1,11 +1,13 @@
 @(title: String)
-@title
 
+
+@title
 
 
 <form action="@routes.AllowanceController.addAllowance()" method="POST">
 
-    <input type="text" id="allowance">
+
+    <input type="text" id="allowance" name="allowance">
     <input type="submit">
 
 </form>

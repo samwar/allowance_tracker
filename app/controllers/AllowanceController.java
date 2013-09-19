@@ -22,6 +22,7 @@ public class AllowanceController extends Controller {
 
     public static Result addAllowance() {
         Allowance allowance = Form.form(Allowance.class).bindFromRequest().get();
+
         allowance.remainder = allowance.allowance;
         allowance.save();
 

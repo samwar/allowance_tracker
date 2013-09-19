@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ public class Purchase extends Model {
     @Id
     public String id;
 
+    @Constraints.Required
     public double amount;
 
     public String type;

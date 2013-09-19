@@ -4,12 +4,12 @@ Allowance total: @allowance.allowance<br>
 Allowance remainder: @allowance.remainder<br>
 Enter your purchase.
 <form action="@routes.PurchaseController.addPurchase" method="post">
-    <select>
+    <select id="type" name="type">
         <option>Movie</option>
         <option>Dinner</option>
         <option>Video Game</option>
         <option>Clothing</option>
     </select>
-    <input type="text" id="amount">
+    <input type="text" id="amount" name="type">
     <input type="submit">
 </form>
