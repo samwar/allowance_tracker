@@ -20,4 +20,5 @@ object ApplicationBuild extends Build {
     resolvers += Resolver.url("github repo for html5tags", url("http://loicdescotte.github.io/releases/"))(Resolver.ivyStylePatterns)
   )
 
+
 }

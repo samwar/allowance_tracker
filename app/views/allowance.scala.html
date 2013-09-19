@@ -1,13 +1,15 @@
-@(title: String)
+@(allowance: Allowance)(title: String)
 
 
-@title
+@main(title) {
 
-
-<form action="@routes.AllowanceController.addAllowance()" method="POST">
-
-
-    <input type="text" id="allowance" name="allowance">
-    <input type="submit">
-
-</form>
+    <div class="hero-unit">
+        @allowanceTotals(allowance)
+        <h3>@title</h3>
+        <form class="form-inline" action="@routes.AllowanceController.addAllowance()" method="POST">
+            <input type="hidden" id="id" name="id" value="@allowance.id"/>
+            <input type="text" id="allowance" name="allowance" placeholder="Allowance amount"/>
+            <input type="submit" class="btn"/>
+        </form>
+    </div>
+}

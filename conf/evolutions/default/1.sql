@@ -5,15 +5,15 @@
 
 create table allowance (
   id                        varchar(255) not null,
-  allowance                 double,
-  remainder                 double,
+  allowance                 float,
+  remainder                 float,
   start_date                timestamp,
   constraint pk_allowance primary key (id))
 ;
 
 create table purchase (
   id                        varchar(255) not null,
-  amount                    double,
+  amount                    float,
   type                      varchar(255),
   constraint pk_purchase primary key (id))
 ;

@@ -6,10 +6,35 @@
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/glyphicons-halflings.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
     </head>
     <body>
-        @content
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="@routes.AllowanceController.allowance()">Allowance tracker</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="@routes.AllowanceController.allowance()">Enter allowance</a></li>
+                            <li><a href="@routes.PurchaseController.purchase()">Enter purchase</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="container">
+            @content
+        </div>
     </body>
 </html>

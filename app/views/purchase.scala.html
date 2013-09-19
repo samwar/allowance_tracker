@@ -1,15 +1,23 @@
-@(allowance: Allowance)
+@(allowance: Allowance)(title: String)
 
-Allowance total: @allowance.allowance<br>
-Allowance remainder: @allowance.remainder<br>
-Enter your purchase.
-<form action="@routes.PurchaseController.addPurchase" method="post">
-    <select id="type" name="type">
-        <option>Movie</option>
-        <option>Dinner</option>
-        <option>Video Game</option>
-        <option>Clothing</option>
-    </select>
-    <input type="text" id="amount" name="type">
-    <input type="submit">
+@main(title){
+<div class="hero-unit">
+@allowanceTotals(allowance)
+
+<form class="form" action="@routes.PurchaseController.addPurchase" method="post">
+    <h3>@title</h3>
+    <div class="controls">
+        <select id="type" name="type">
+            <option>Movie</option>
+            <option>Dinner</option>
+            <option>Video Game</option>
+            <option>Clothing</option>
+        </select>
+    </div>
+    <div class="controls">
+        <input type="text" id="amount" name="amount" placeholder="Purchase amount">
+    </div>
+    <input type="submit" class="btn">
 </form>
+</div>
+}

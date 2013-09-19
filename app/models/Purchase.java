@@ -21,7 +21,7 @@ public class Purchase extends Model {
     public String id;
 
     @Constraints.Required
-    public double amount;
+    public float amount;
 
     public String type;
 

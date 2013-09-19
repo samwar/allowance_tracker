@@ -5,7 +5,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -23,11 +23,11 @@ public class Allowance extends Model {
     public String id;
 
     @Constraints.Required
-    public double allowance;
+    public float allowance = 0;
 
-    public double remainder;
+    public float remainder = 0;
 
-    public Date startDate;
+    public Date startDate = Calendar.getInstance().getTime();
 
     @Override
     public String toString() {

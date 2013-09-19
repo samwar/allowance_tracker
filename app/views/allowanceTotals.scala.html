@@ -1,0 +1,11 @@
+@(allowance: Allowance)
+
+<span>Allowance total: @allowance.allowance</span>
+<br/>
+<span>Allowance remainder:
+@if(allowance.remainder > 0){
+<font color="green">
+    } else {
+<font color="red">
+    }
+@allowance.remainder</font></span>

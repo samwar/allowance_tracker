@@ -1,10 +1,14 @@
 package controllers;
 
 import models.Allowance;
+import play.Logger;
 import play.data.Form;
+import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.allowance;
+
+import java.util.List;
 
 
 /**
@@ -17,14 +21,22 @@ import views.html.allowance;
 public class AllowanceController extends Controller {
 
     public static Result allowance() {
-        return ok(allowance.render("Enter the amount of your allowance."));
+        List<Allowance> allowanceList = new Model.Finder(String.class, Allowance.class).all();
+        Allowance allowance = null;
+        if(allowanceList.isEmpty()) {
+            allowance = new Allowance();
+            allowance.save();
+        } else {
+           allowance = allowanceList.get(0);
+        }
+        return ok(views.html.allowance.render(allowance,"Enter the amount of your allowance"));
     }
 
     public static Result addAllowance() {
         Allowance allowance = Form.form(Allowance.class).bindFromRequest().get();
-
+        Logger.debug("Allowance id:" + allowance.id);
         allowance.remainder = allowance.allowance;
-        allowance.save();
+        allowance.update();
 
         return redirect(routes.AllowanceController.allowance());
     }
