@@ -1,10 +1,15 @@
 package models;
 
+import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +28,23 @@ public class Purchase extends Model {
     @Constraints.Required
     public float amount;
 
-    public String type;
+    public String purchaseType;
+
+    @Formats.DateTime(pattern="dd/MM/yyyy hh:mm")
+    public Date purchaseDate = Calendar.getInstance().getTime();
+
+    @ManyToOne
+    @JoinColumn(name = "allowance_id")
+    public Allowance allowance;
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "id='" + id + '\'' +
+                ", amount=" + amount +
+                ", type='" + purchaseType + '\'' +
+                ", allowance=" + allowance +
+                '}';
+    }
 
 }

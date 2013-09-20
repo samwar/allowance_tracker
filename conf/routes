@@ -5,11 +5,12 @@
 # Home page
 
 
-GET     /                           controllers.AllowanceController.allowance()
-POST    /allowance                  controllers.AllowanceController.addAllowance()
-GET     /purchase                   controllers.PurchaseController.purchase()
-POST    /addPurchase                controllers.PurchaseController.addPurchase()
-GET     /purchase/list              controllers.PurchaseController.listPurchases()
+GET     /                                    controllers.Application.index()
+GET     /allowance                           controllers.AllowanceController.allowance()
+POST    /addAllowance                        controllers.AllowanceController.addAllowance()
+GET     /purchase                            controllers.PurchaseController.purchase()
+POST    /addPurchase                         controllers.PurchaseController.addPurchase()
+GET     /purchase/list                       controllers.PurchaseController.listPurchases()
 
 
 # Map static resources from the /public folder to the /assets URL path

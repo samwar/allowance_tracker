@@ -14,7 +14,9 @@ create table allowance (
 create table purchase (
   id                        varchar(255) not null,
   amount                    float,
-  type                      varchar(255),
+  purchase_type             varchar(255),
+  purchase_date             timestamp,
+  allowance_id              varchar(255),
   constraint pk_purchase primary key (id))
 ;
 
@@ -22,6 +24,8 @@ create sequence allowance_seq;
 
 create sequence purchase_seq;
 
+alter table purchase add constraint fk_purchase_allowance_1 foreign key (allowance_id) references allowance (id) on delete restrict on update restrict;
+create index ix_purchase_allowance_1 on purchase (allowance_id);
 
 
 

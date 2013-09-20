@@ -34,8 +34,10 @@ public class AllowanceController extends Controller {
 
     public static Result addAllowance() {
         Allowance allowance = Form.form(Allowance.class).bindFromRequest().get();
-        Logger.debug("Allowance id:" + allowance.id);
-        allowance.remainder = allowance.allowance;
+
+        if(allowance.remainder > allowance.allowance || allowance.remainder == 0) {
+            allowance.remainder = allowance.allowance;
+        }
         allowance.update();
 
         return redirect(routes.AllowanceController.allowance());

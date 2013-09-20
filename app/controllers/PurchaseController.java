@@ -7,9 +7,12 @@ import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.index;
 import views.html.purchase;
 
 import java.util.List;
+
+import static play.libs.Json.toJson;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,6 +25,11 @@ public class PurchaseController extends Controller {
 
     public static Result purchase() {
         List<Allowance> allowances = new Model.Finder(String.class, Allowance.class).all();
+
+        if(allowances.isEmpty()) {
+            return ok(index.render("Welcome to the allowance tracker!"));
+        }
+
         float amt = allowances.get(0).allowance;
 
         for(Allowance allowance : allowances) {
@@ -39,7 +47,8 @@ public class PurchaseController extends Controller {
         Logger.debug("Allowance remainder:" + allowance.remainder);
         Logger.debug (allowance.toString());
         allowance.update();
-        Logger.debug(purchase.type);
+        Logger.debug(purchase.purchaseType);
+        purchase.allowance = allowance;
         purchase.save();
 
         return redirect(routes.PurchaseController.purchase());
@@ -47,5 +56,9 @@ public class PurchaseController extends Controller {
 
     public static Result listPurchases() {
         return TODO;
+//        List<Purchase> purchases = new Model.Finder(String.class, Purchase.class).all();
+
+//        return ok(toJson(purchases));
+//         return ok(views.html.purchases.render(purchases));
     }
 }

@@ -1,0 +1,22 @@
+@(purchases : List[Purchase])
+
+<div class="hero-unit">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Purchase Type</th>
+                <th>Amount</th>
+                <th>Purchase Date</th>
+             </tr>
+        </thead>
+        <tbody>
+            @for(purchase <- purchases) {
+                <tr>
+                <td>@purchase.purchaseType</td>
+                <td>@purchase.amount</td>
+                <td>@purchase.purchaseDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

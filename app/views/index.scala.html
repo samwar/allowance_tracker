@@ -1,7 +1,11 @@
 @(message: String)
 
-@main("Welcome to Play 2.1") {
+@main(message) {
+    <div class="hero-unit">
+        <h1>@message</h1>
+        <p>Click on the <a href="@routes.AllowanceController.allowance()">Enter allowance</a> link to get started!</p>
+    </div>
     
-    @play20.welcome(message, style = "Java")
+
     
 }
