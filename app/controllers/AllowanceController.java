@@ -29,14 +29,20 @@ public class AllowanceController extends Controller {
         } else {
            allowance = allowanceList.get(0);
         }
+        Logger.debug(allowance.id);
         return ok(views.html.allowance.render(allowance,"Enter the amount of your allowance"));
     }
 
     public static Result addAllowance() {
         Allowance allowance = Form.form(Allowance.class).bindFromRequest().get();
-
-        if(allowance.remainder > allowance.allowance || allowance.remainder == 0) {
+        Allowance oldAllowance = (Allowance) new Model.Finder(String.class, Allowance.class).byId(allowance.id);
+        //Logger.debug(allowance.id);
+        if(oldAllowance.remainder == 0) {
             allowance.remainder = allowance.allowance;
+        } else if (allowance.allowance < oldAllowance.allowance) {
+            allowance.remainder = oldAllowance.remainder - (oldAllowance.allowance - allowance.allowance);
+        } else if (allowance.allowance > oldAllowance.allowance) {
+            allowance.remainder = oldAllowance.remainder + (allowance.allowance - oldAllowance.allowance);
         }
         allowance.update();
 
