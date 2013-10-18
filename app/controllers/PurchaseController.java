@@ -55,10 +55,10 @@ public class PurchaseController extends Controller {
     }
 
     public static Result listPurchases() {
-        return TODO;
-//        List<Purchase> purchases = new Model.Finder(String.class, Purchase.class).all();
+//        return TODO;
+        List<Purchase> purchases = new Model.Finder(String.class, Purchase.class).all();
 
 //        return ok(toJson(purchases));
-//         return ok(views.html.purchases.render(purchases));
+         return ok(views.html.purchases.render(purchases));
     }
 }
